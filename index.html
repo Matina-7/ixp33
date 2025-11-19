@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Right-top HUD -->
-    <div id="hud">
-        <div id="instructions">Use W A D to move, collect 7 coins to win</div>
-        <div id="coins">Coins: 0 / 7</div>
+    <div class="game-container">
+        <h1>Siamese Cat Adventure</h1>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+        <!-- HUD - Upper Right Corner -->
+        <div class="hud">
+            <h3>Game Info</h3>
+            <div id="coins">Coins: 0 / 7</div>
+            <div class="controls">
+                <p><strong>W</strong> - Jump (Double Jump)</p>
+                <p><strong>A</strong> - Move Left</p>
+                <p><strong>D</strong> - Move Right</p>
+                <p>Collect 7 coins to win!</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Canvas for game -->
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
-
-    <!-- Narrative dialog -->
-    <div id="dialogBox" style="display:none;">
+    <!-- Narrative Dialog Box -->
+    <div id="dialogBox">
         <p id="dialogText"></p>
         <div id="options"></div>
     </div>
