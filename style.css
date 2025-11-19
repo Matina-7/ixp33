@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,16 +6,243 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
+    color: #ecf0f1;
+    overflow: hidden;
 }
 
-#game-container {
-    width: 100%;
+/* Game Container */
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Game Title */
+h1 {
+    font-size: 2.5em;
+    color: #e74c3c;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+/* Canvas Styling */
+#gameCanvas {
+    border: 5px solid #c0392b;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #ecf0f1;
+    display: block;
+}
+
+/* HUD - Upper Right Corner */
+.hud {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(44, 62, 80, 0.9);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 3px solid #e74c3c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    min-width: 200px;
+}
+
+.hud h3 {
+    font-size: 1.2em;
+    color: #f39c12;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#coins {
+    font-size: 1.3em;
+    color: #f1c40f;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+    font-size: 0.9em;
+    color: #ecf0f1;
+    line-height: 1.8;
+    border-top: 2px solid #e74c3c;
+    padding-top: 10px;
+}
+
+.controls p {
+    margin: 5px 0;
+}
+
+.controls strong {
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Dialog Box */
+#dialogBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+    border: 5px solid #f39c12;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    min-width: 400px;
+    max-width: 500px;
+    display: none;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#dialogText {
+    font-size: 1.4em;
+    color: #fff;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+/* Options Container */
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Buttons */
+#options button {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#options button:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#options button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Item Icons for Buttons */
+#options button:nth-child(1)::before {
+    content: "🔆 ";
+}
+
+#options button:nth-child(2)::before {
+    content: "🐟 ";
+}
+
+#options button:nth-child(3)::before {
+    content: "🎈 ";
+}
+
+/* Loading State */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    color: #f39c12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .hud {
+        position: static;
+        margin-bottom: 15px;
+    }
+
+    #dialogBox {
+        min-width: 90%;
+        padding: 20px;
+    }
+
+    #dialogText {
+        font-size: 1.2em;
+    }
+
+    #options button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Game Instructions */
+.instructions {
+    text-align: center;
+    color: #bdc3c7;
+    font-size: 0.9em;
+    margin-top: 15px;
     max-width: 800px;
-    padding: 20px;
+    line-height: 1.6;
+}
+
+.instructions strong {
+    color: #e74c3c;
+}
+
+/* Animation for coin collection effect */
+@keyframes coinCollect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.coin-collected {
+    animation: coinCollect 0.3s ease;
 }
